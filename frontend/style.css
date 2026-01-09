@@ -1,0 +1,474 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+/* Map Section */
+.map-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#map {
+    flex: 1;
+    min-height: 500px;
+    border-radius: 15px;
+    border: 3px solid #0f3460;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.destination-panel {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(15, 52, 96, 0.8);
+    border-radius: 10px;
+}
+
+.destination-panel input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #1a1a2e;
+    color: #fff;
+    font-size: 14px;
+}
+
+.destination-panel input::placeholder {
+    color: #888;
+}
+
+.destination-panel button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#set-destination-btn {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: #fff;
+}
+
+#set-destination-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+}
+
+#clear-route-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #cc4444 100%);
+    color: #fff;
+}
+
+#clear-route-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.car-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 15px;
+    background: rgba(15, 52, 96, 0.8);
+    border-radius: 10px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: rgba(26, 26, 46, 0.8);
+    border-radius: 8px;
+}
+
+.info-item .label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.info-item span:last-child {
+    font-size: 16px;
+    font-weight: bold;
+    color: #00d4ff;
+}
+
+/* Controls Section */
+.controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.controls-section h3 {
+    color: #00d4ff;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Steering Wheel */
+.steering-container {
+    background: rgba(15, 52, 96, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.steering-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.steering-wheel {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+    border: 15px solid #444;
+    position: relative;
+    cursor: grab;
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease;
+}
+
+.steering-wheel:active {
+    cursor: grabbing;
+}
+
+.steering-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #555 0%, #333 100%);
+    border: 3px solid #666;
+}
+
+.steering-spoke {
+    position: absolute;
+    background: linear-gradient(90deg, #444 0%, #333 100%);
+    border-radius: 5px;
+}
+
+.spoke-1 {
+    width: 8px;
+    height: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
+
+.spoke-2 {
+    width: 70px;
+    height: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -50%) rotate(-30deg);
+    transform-origin: right center;
+}
+
+.spoke-3 {
+    width: 70px;
+    height: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(0%, -50%) rotate(30deg);
+    transform-origin: left center;
+}
+
+.steering-info {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #00d4ff;
+}
+
+/* Pedals */
+.pedals-container {
+    background: rgba(15, 52, 96, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.pedals {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.pedal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.pedal-track {
+    width: 60px;
+    height: 150px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #333;
+}
+
+.pedal {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: bottom 0.1s ease;
+    z-index: 2;
+    user-select: none;
+}
+
+.clutch-pedal {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+}
+
+.brake-pedal {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.accelerator-pedal {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+
+.pedal-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    transition: height 0.1s ease;
+    z-index: 1;
+}
+
+.clutch-fill {
+    background: linear-gradient(to top, rgba(155, 89, 182, 0.5) 0%, rgba(155, 89, 182, 0.1) 100%);
+}
+
+.brake-fill {
+    background: linear-gradient(to top, rgba(231, 76, 60, 0.5) 0%, rgba(231, 76, 60, 0.1) 100%);
+}
+
+.accelerator-fill {
+    background: linear-gradient(to top, rgba(46, 204, 113, 0.5) 0%, rgba(46, 204, 113, 0.1) 100%);
+}
+
+.pedal-label {
+    font-size: 12px;
+    color: #888;
+}
+
+.pedal-value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #00d4ff;
+}
+
+/* Gear Box */
+.gear-container {
+    background: rgba(15, 52, 96, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.gear-box {
+    display: flex;
+    justify-content: center;
+}
+
+.gear-pattern {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    border: 2px solid #333;
+}
+
+.gear-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.gear-row.center {
+    margin-top: 5px;
+}
+
+.gear-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #444;
+    background: linear-gradient(135deg, #333 0%, #222 100%);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gear-btn:hover {
+    background: linear-gradient(135deg, #444 0%, #333 100%);
+    border-color: #00d4ff;
+}
+
+.gear-btn.active {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    border-color: #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.gear-btn[data-gear="R"].active {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-color: #e74c3c;
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+}
+
+/* Engine Controls */
+.engine-container {
+    background: rgba(15, 52, 96, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#engine-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#engine-btn.engine-off {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: #fff;
+}
+
+#engine-btn.engine-on {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+}
+
+#engine-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.engine-status {
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(26, 26, 46, 0.8);
+    border-radius: 8px;
+}
+
+#engine-status {
+    font-weight: bold;
+}
+
+.rpm-gauge {
+    margin-top: 15px;
+}
+
+.rpm-gauge > span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.rpm-bar {
+    height: 20px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #333;
+}
+
+.rpm-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #2ecc71 0%, #f1c40f 50%, #e74c3c 100%);
+    border-radius: 8px;
+    transition: width 0.2s ease;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .controls-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .controls-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .pedals {
+        flex-direction: row;
+    }
+}
+
+/* Car marker animation */
+.car-marker {
+    transition: transform 0.1s ease;
+}
+
+/* Route line styling */
+.route-line {
+    stroke: #00d4ff;
+    stroke-width: 4;
+    stroke-opacity: 0.8;
+}

@@ -1,0 +1,204 @@
+.map-wrapper {
+  position: relative;
+  flex: 1;
+  min-height: 450px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+  background: #1a1a2e;
+  z-index: 1;
+}
+
+/* Fix leaflet container height */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+}
+
+/* Custom car marker styles */
+.car-marker-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.car-icon-wrapper {
+  transition: transform 0.15s ease-out;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+}
+
+.destination-marker-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.destination-icon {
+  animation: bounce 1s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(231, 76, 60, 0.5));
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Map overlays */
+.map-overlay {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.compass {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(10, 10, 15, 0.95);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.compass-ring {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  border: 1px solid #333;
+  border-radius: 50%;
+}
+
+.compass-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 40px;
+  margin-left: -3px;
+  margin-top: -20px;
+  transition: transform 0.2s ease;
+}
+
+.arrow-north {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 18px solid #e74c3c;
+}
+
+.arrow-south {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 18px solid #fff;
+}
+
+.compass-n, .compass-s, .compass-e, .compass-w {
+  position: absolute;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: bold;
+  color: #888;
+}
+
+.compass-n { top: 2px; left: 50%; transform: translateX(-50%); color: #e74c3c; }
+.compass-s { bottom: 2px; left: 50%; transform: translateX(-50%); }
+.compass-e { right: 2px; top: 50%; transform: translateY(-50%); }
+.compass-w { left: 2px; top: 50%; transform: translateY(-50%); }
+
+/* Speed overlay */
+.speed-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 1000;
+  background: rgba(10, 10, 15, 0.95);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.speed-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.speed-unit {
+  font-size: 0.7rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* Leaflet customizations */
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  background: rgba(10, 10, 15, 0.95) !important;
+  color: var(--primary-color) !important;
+  border: none !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  font-size: 18px !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: rgba(0, 212, 255, 0.2) !important;
+}
+
+.leaflet-control-zoom-in {
+  border-bottom: 1px solid #333 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(10, 10, 15, 0.8) !important;
+  color: #666 !important;
+  font-size: 0.65rem;
+  padding: 3px 8px !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--primary-color) !important;
+}
+
+/* Polyline animation */
+.leaflet-interactive {
+  stroke-dasharray: 15, 10;
+  animation: dash 1s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -25;
+  }
+}

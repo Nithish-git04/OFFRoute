@@ -1,0 +1,136 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.gauge-svg {
+  width: 100%;
+  max-width: 160px;
+}
+
+.gauge-value {
+  position: absolute;
+  bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gauge-value .value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 20px var(--primary-color);
+  line-height: 1;
+}
+
+.gauge-value .unit {
+  font-size: 0.65rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.gauge-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.info-display {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.info-row {
+  display: flex;
+  gap: 10px;
+}
+
+.info-item {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.info-item.wide {
+  flex: 2;
+}
+
+.info-label {
+  font-size: 0.6rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-value.small {
+  font-size: 0.8rem;
+}
+
+.gear-display {
+  font-size: 1.6rem !important;
+  font-weight: bold;
+}
+
+.engine-on {
+  color: var(--success-color) !important;
+}
+
+.engine-off {
+  color: var(--danger-color) !important;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .gauge-value .value {
+    font-size: 1.4rem;
+  }
+  
+  .info-row {
+    flex-wrap: wrap;
+  }
+  
+  .info-item {
+    min-width: calc(50% - 5px);
+  }
+}

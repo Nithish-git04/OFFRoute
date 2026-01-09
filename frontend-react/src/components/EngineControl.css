@@ -1,0 +1,130 @@
+.engine-card {
+  text-align: center;
+}
+
+.engine-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.engine-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+}
+
+.button-ring {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(145deg, #333, #1a1a1a);
+  border: 3px solid #444;
+}
+
+.button-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.engine-button.off .button-inner {
+  background: linear-gradient(145deg, #2ecc71, #27ae60);
+}
+
+.engine-button.on .button-inner {
+  background: linear-gradient(145deg, #e74c3c, #c0392b);
+}
+
+.power-icon {
+  width: 35px;
+  height: 35px;
+  color: white;
+}
+
+.engine-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.status-indicator.off {
+  background: #666;
+  box-shadow: none;
+}
+
+.status-indicator.on {
+  background: #2ecc71;
+  box-shadow: 0 0 15px #2ecc71;
+}
+
+.status-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+.indicators {
+  display: flex;
+  gap: 15px;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.indicator span {
+  font-size: 0.65rem;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+.indicator-light {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #333;
+  border: 2px solid #444;
+  transition: all 0.3s ease;
+}
+
+.indicator.active .indicator-light.oil,
+.indicator.active .indicator-light.battery {
+  background: #2ecc71;
+  box-shadow: 0 0 10px #2ecc71;
+}
+
+.indicator.warning .indicator-light.brake,
+.indicator.warning .indicator-light.temp {
+  background: #e74c3c;
+  box-shadow: 0 0 10px #e74c3c;
+  animation: blink 0.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Map Section -->
+        <div class="map-section">
+            <div id="map"></div>
+            <div class="destination-panel">
+                <input type="text" id="destination-input" placeholder="Enter destination address...">
+                <button id="set-destination-btn">Set Destination</button>
+                <button id="clear-route-btn">Clear Route</button>
+            </div>
+            <div class="car-info">
+                <div class="info-item">
+                    <span class="label">Position:</span>
+                    <span id="position-display">0.0000, 0.0000</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Speed:</span>
+                    <span id="speed-display">0</span> km/h
+                </div>
+                <div class="info-item">
+                    <span class="label">Heading:</span>
+                    <span id="heading-display">0</span>°
+                </div>
+                <div class="info-item">
+                    <span class="label">Gear:</span>
+                    <span id="gear-display">N</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Distance to Dest:</span>
+                    <span id="distance-display">--</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls Section -->
+        <div class="controls-section">
+            <!-- Steering Wheel -->
+            <div class="steering-container">
+                <h3>Steering Wheel</h3>
+                <div class="steering-wrapper">
+                    <div class="steering-wheel" id="steering-wheel">
+                        <div class="steering-center"></div>
+                        <div class="steering-spoke spoke-1"></div>
+                        <div class="steering-spoke spoke-2"></div>
+                        <div class="steering-spoke spoke-3"></div>
+                    </div>
+                </div>
+                <div class="steering-info">
+                    <span>Angle: <span id="steering-angle">0</span>°</span>
+                </div>
+            </div>
+
+            <!-- Pedals -->
+            <div class="pedals-container">
+                <h3>Pedals</h3>
+                <div class="pedals">
+                    <!-- Clutch -->
+                    <div class="pedal-wrapper">
+                        <div class="pedal-track">
+                            <div class="pedal clutch-pedal" id="clutch-pedal">
+                                <span>C</span>
+                            </div>
+                            <div class="pedal-fill clutch-fill" id="clutch-fill"></div>
+                        </div>
+                        <span class="pedal-label">Clutch</span>
+                        <span class="pedal-value" id="clutch-value">0%</span>
+                    </div>
+
+                    <!-- Brake -->
+                    <div class="pedal-wrapper">
+                        <div class="pedal-track">
+                            <div class="pedal brake-pedal" id="brake-pedal">
+                                <span>B</span>
+                            </div>
+                            <div class="pedal-fill brake-fill" id="brake-fill"></div>
+                        </div>
+                        <span class="pedal-label">Brake</span>
+                        <span class="pedal-value" id="brake-value">0%</span>
+                    </div>
+
+                    <!-- Accelerator -->
+                    <div class="pedal-wrapper">
+                        <div class="pedal-track">
+                            <div class="pedal accelerator-pedal" id="accelerator-pedal">
+                                <span>A</span>
+                            </div>
+                            <div class="pedal-fill accelerator-fill" id="accelerator-fill"></div>
+                        </div>
+                        <span class="pedal-label">Accelerator</span>
+                        <span class="pedal-value" id="accelerator-value">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gear Shift -->
+            <div class="gear-container">
+                <h3>Gear Shift</h3>
+                <div class="gear-box">
+                    <div class="gear-pattern">
+                        <div class="gear-row">
+                            <button class="gear-btn" data-gear="1">1</button>
+                            <button class="gear-btn" data-gear="2">2</button>
+                        </div>
+                        <div class="gear-row">
+                            <button class="gear-btn" data-gear="3">3</button>
+                            <button class="gear-btn" data-gear="4">4</button>
+                        </div>
+                        <div class="gear-row">
+                            <button class="gear-btn" data-gear="5">5</button>
+                            <button class="gear-btn" data-gear="R">R</button>
+                        </div>
+                        <div class="gear-row center">
+                            <button class="gear-btn active" data-gear="N">N</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engine Controls -->
+            <div class="engine-container">
+                <h3>Engine</h3>
+                <button id="engine-btn" class="engine-off">Start Engine</button>
+                <div class="engine-status">
+                    <span id="engine-status">Engine Off</span>
+                </div>
+                <div class="rpm-gauge">
+                    <span>RPM: <span id="rpm-display">0</span></span>
+                    <div class="rpm-bar">
+                        <div class="rpm-fill" id="rpm-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
